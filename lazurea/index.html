@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101a22">
+<title>L’AZURÉA Residences — The Book</title>
+<meta name="description" content="L’AZURÉA Residences, Sainte-Maxime — a La Guestation Collection.">
+<meta property="og:title" content="L’AZURÉA Residences — The Book"><meta property="og:image" content="thumbs/p01.jpg">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body>
+<header class="mast">
+  <a class="back" href="../"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg><span>Back</span></a>
+  <div class="title">L’AZURÉA<em>Residences</em></div>
+  <a class="site" href="https://laguestationcollection.com" target="_blank" rel="noopener">Website</a>
+</header>
+<main class="reader">
+  <div class="stage" id="stage" aria-label="Book viewer"><div class="loader">Opening the book…</div></div>
+  <div class="controls">
+    <button class="nav" id="prev" aria-label="Previous page"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg></button>
+    <div class="counter" id="counter">—</div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <button class="nav" id="next" aria-label="Next page"><svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button>
+    <div class="tools"><button class="tool" id="thumbToggle">Contents</button><button class="tool" id="full">Full screen</button></div>
+  </div>
+  <div class="hint">Tap the page edges, swipe or use the arrows · turn your phone for a larger view</div>
+  <div class="thumbs" id="thumbs" hidden></div>
+</main>
+<script>window.BOOK={type:"spread",count:10,ratio:0.74103};</script>
+<script src="../assets/book.js"></script>
+</body>
+</html>
