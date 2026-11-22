@@ -1,0 +1,69 @@
+/* La Guestation Collection — 3D hub */
+body.h3d{display:block;min-height:auto;background:#0d151c}
+body.h3d::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 50% 42%,#22313d 0%,#121c25 55%,#0a1016 100%)}
+
+.h3d-top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:calc(16px + env(safe-area-inset-top)) 22px 16px;pointer-events:none}
+.h3d-top .brand{font-family:"CG",Georgia,serif;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink)}
+.h3d-top .brand em{font-style:italic;letter-spacing:.06em;text-transform:none;color:var(--gold);margin-left:6px}
+.h3d-top .site{pointer-events:auto;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);padding:9px 14px;border-radius:40px;transition:color .2s,border-color .2s}
+.h3d-top .site:hover{color:var(--ink);border-color:var(--gold)}
+
+/* intro */
+.h3d-intro{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:90px 22px 60px}
+.h3d-intro .logo{width:min(380px,72vw);height:auto;margin:0 0 30px;animation:h3dIn 1.6s cubic-bezier(.2,.7,.2,1) both}
+.h3d-intro .kicker,.hub .kicker,.orbit-head .kicker{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.h3d-intro .kicker{animation:h3dIn 1.6s .25s cubic-bezier(.2,.7,.2,1) both}
+.h3d-intro h1{font-family:"CG",Georgia,serif;font-weight:400;font-size:clamp(28px,4.6vw,46px);line-height:1.14;letter-spacing:.02em;margin:0;
+  animation:h3dIn 1.6s .4s cubic-bezier(.2,.7,.2,1) both}
+.scroll-cue{margin:46px 0 0;display:flex;flex-direction:column;align-items:center;gap:14px;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--muted);animation:h3dIn 1.6s .7s both}
+.scroll-cue i{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);transform-origin:top;animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@keyframes h3dIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* orbit (pinned 3D) */
+.orbit{position:relative;height:560vh}
+.orbit-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.orbit-stage{position:absolute;inset:0;touch-action:pan-y;cursor:grab}
+.orbit-stage:active{cursor:grabbing}
+.orbit-stage canvas{display:block;width:100%;height:100%}
+.orbit-head{position:absolute;z-index:3;left:0;right:0;top:calc(64px + env(safe-area-inset-top));display:flex;justify-content:space-between;
+  align-items:flex-end;padding:0 24px;pointer-events:none}
+.orbit-head .kicker{margin:0}
+.orbit-head .count{margin:0;font-family:"CG",Georgia,serif;font-size:30px;line-height:1;color:var(--ink);letter-spacing:.04em}
+.orbit-head .count small{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+
+.orbit-cap{position:absolute;z-index:3;left:50%;bottom:calc(30px + env(safe-area-inset-bottom));transform:translate(-50%,16px);
+  width:min(560px,90vw);text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;pointer-events:none;
+  transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.orbit-cap.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.cap-n{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.cap-t{font-family:"CG",Georgia,serif;font-style:italic;font-size:clamp(24px,3.4vw,34px);line-height:1.1;color:var(--ink)}
+.cap-d{font-size:13px;line-height:1.5;color:#c9c2b4;max-width:440px}
+.cap-go{margin-top:10px;display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:40px;background:var(--gold);color:#0d151c;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;transition:transform .25s,background .25s}
+.cap-go:hover{background:#d6c08f;transform:translateY(-1px)}
+.cap-go svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.6}
+.orbit-hint{position:absolute;z-index:3;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom));text-align:center;margin:0;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);transition:opacity .4s}
+.orbit-hint.off{opacity:0}
+
+/* closing list */
+body.h3d .hub{min-height:auto;padding:110px 18px 50px;justify-content:flex-start}
+.choose-title{font-family:"CG",Georgia,serif;font-weight:400;font-style:italic;font-size:clamp(26px,4vw,38px);margin:0 0 34px;color:var(--ink)}
+body.h3d .foot{padding:26px 18px calc(30px + env(safe-area-inset-bottom))}
+
+/* no WebGL / reduced data */
+.no3d .orbit{display:none}
+@media (max-width:640px){
+  .orbit{height:520vh}
+  .orbit-head{top:calc(58px + env(safe-area-inset-top));padding:0 18px}
+  .orbit-head .count{font-size:24px}
+  .cap-d{font-size:12.5px}
+  .h3d-top{padding-left:16px;padding-right:16px}
+  .h3d-top .brand{font-size:11px;letter-spacing:.22em}
+}

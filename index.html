@@ -3,35 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#101a22">
+<meta name="theme-color" content="#0d151c">
 <title>La Guestation Collection — Welcome</title>
 <meta name="description" content="La Guestation Collection · L’AZURÉA Residences, Sainte-Maxime. Discover our website and our books.">
 <meta property="og:title" content="La Guestation Collection">
 <meta property="og:image" content="guestation/thumbs/p01.jpg">
 <link rel="icon" href="assets/favicon.png">
+<link rel="preload" href="assets/fonts/cg400i.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/jo400.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="assets/book.css">
+<link rel="stylesheet" href="assets/hub3d.css">
 </head>
-<body>
-<section class="hub">
+<body class="h3d">
+
+<header class="h3d-top">
+  <span class="brand">La Guestation <em>Collection</em></span>
+  <a class="site" href="https://laguestationcollection.com" target="_blank" rel="noopener">Website</a>
+</header>
+
+<section class="h3d-intro">
   <img class="logo" src="assets/logo-ivory.png" alt="La Guestation Collection" width="900" height="353">
   <p class="kicker">Welcome to the table</p>
   <h1>Bespoke culinary experiences<br>&amp; the art of hospitality</h1>
-  <p class="lead">Choose where your journey begins.</p>
+  <p class="scroll-cue"><span>Scroll to discover</span><i></i></p>
+</section>
+
+<section class="orbit" id="orbit" aria-label="The Collection">
+  <div class="orbit-pin">
+    <div class="orbit-head">
+      <p class="kicker">The Collection</p>
+      <p class="count"><span id="countN">00</span><small> / 03</small></p>
+    </div>
+    <div class="orbit-stage" id="stage">
+      <canvas id="gl" aria-hidden="true"></canvas>
+    </div>
+    <div class="orbit-cap" id="cap" aria-live="polite">
+      <span class="cap-n" id="capN"></span>
+      <span class="cap-t" id="capT"></span>
+      <span class="cap-d" id="capD"></span>
+      <a class="cap-go" id="capGo" href="#"><span id="capGoT">Open</span><svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+    <p class="orbit-hint" id="hint">Keep scrolling · drag to turn</p>
+  </div>
+</section>
+
+<section class="hub" id="choose">
+  <p class="kicker">Your journey</p>
+  <h2 class="choose-title">Choose where it begins</h2>
   <div class="choices">
     <a class="choice" href="guestation/">
-      <div class="vis book-cover"><img src="guestation/thumbs/p01.jpg" alt="La Guestation — The Art of the Table"></div>
+      <div class="vis book-cover"><img src="guestation/thumbs/p01.jpg" alt="La Guestation — The Art of the Table" loading="lazy"></div>
       <div class="txt"><span class="n">The book · 01</span><span class="t">La Guestation</span><span class="d">The art of the table by Chef Wii — his journey, signature experiences and bespoke offerings.</span><span class="go">Open the book</span></div>
     </a>
     <a class="choice" href="lazurea/">
-      <div class="vis"><img src="lazurea/thumbs/p01.jpg" alt="L’AZURÉA Residences"></div>
+      <div class="vis"><img src="lazurea/thumbs/p01.jpg" alt="L’AZURÉA Residences" loading="lazy"></div>
       <div class="txt"><span class="n">The book · 02</span><span class="t">L’AZURÉA Residences</span><span class="d">A private residence in Sainte-Maxime on the French Riviera, a La Guestation Collection.</span><span class="go">Open the book</span></div>
     </a>
     <a class="choice" href="https://laguestationcollection.com" target="_blank" rel="noopener">
-      <div class="vis"><img src="assets/website.jpg" alt="La Guestation Collection website"></div>
+      <div class="vis"><img src="assets/website.jpg" alt="La Guestation Collection website" loading="lazy"></div>
       <div class="txt"><span class="n">Online</span><span class="t">Visit our website</span><span class="d">Stays, gastronomy, experiences and enquiries — laguestationcollection.com</span><span class="go">Visit the website</span></div>
     </a>
   </div>
 </section>
 <footer class="foot">La Guestation Collection · Paris · Cannes · Bordeaux · Dubai</footer>
+
+<script>
+  (function () {
+    try {
+      var c = document.createElement('canvas');
+      var ok = !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl')));
+      if (!ok) document.documentElement.classList.add('no3d');
+    } catch (e) { document.documentElement.classList.add('no3d'); }
+  })();
+</script>
+<script type="module" src="assets/hub3d.js"></script>
 </body>
 </html>
